@@ -12,5 +12,16 @@
       <input type="text" autofocus />
       <button type="submit">Add</button>
     </form>
+    <script>
+      const electron = require("electron");
+      const { ipcRenderer } = electron;
+      const form = document.querySelector("form");
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const { value } = document.querySelector("input");
+        console.log(value);
+        ipcRenderer.send("addTodo", value);
+      });
+    </script>
   </body>
 </html>
