@@ -7,6 +7,19 @@
     <title>Document</title>
   </head>
   <body>
-    Hello World!
+    <script>
+      const electron = require("electron");
+      const { ipcRenderer } = electron;
+      const list = document.createElement("ul");
+
+      ipcRenderer.on("addTodo", (event, todo) => {
+        console.log("sds");
+        const li = document.createElement("li");
+        li.innerHTML = todo;
+
+        list.appendChild(li);
+        document.body.appendChild(list);
+      });
+    </script>
   </body>
 </html>
