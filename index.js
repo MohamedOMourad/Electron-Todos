@@ -17,8 +17,6 @@ app.on("ready", () => {
 
   const mainMenu = Menu.buildFromTemplate(menuList);
   Menu.setApplicationMenu(mainMenu);
-
-  addTodoWindow.on("closed", () => (addTodoWindow = null));
 });
 
 const addNewTodo = () => {
@@ -33,6 +31,8 @@ const addNewTodo = () => {
   });
 
   addTodoWindow.loadURL(`file://${__dirname}/addTodo.html`);
+
+  addTodoWindow.on("closed", () => (addTodoWindow = null));
 };
 
 ipcMain.on("addTodo", (event, todo) => {
